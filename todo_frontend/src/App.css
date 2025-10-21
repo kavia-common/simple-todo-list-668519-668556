@@ -1,11 +1,11 @@
-/* Components styling for the Todo app (Ocean Professional, minimalist) */
+/* Components styling for the Todo app (Ocean Professional, ultra-minimal) */
 
 /* Input section */
 .input-row {
   display: flex;
   gap: 12px;
   align-items: center;
-  margin: 16px 0 20px;
+  margin: 20px 0 22px;
 }
 
 .input-control {
@@ -25,40 +25,41 @@
 
 .input-control:focus {
   outline: none;
-  border: 1px solid rgba(59,130,246,0.5);
+  border: 1px solid #e5e7eb; /* keep neutral */
   background: #fff;
 }
 
-/* Primary button */
+/* Primary button becomes text-only link style */
 .btn {
-  height: 40px;
-  padding: 0 14px;
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
-  background: var(--color-primary);
-  color: #fff;
+  height: auto;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
   font-weight: 600;
   cursor: pointer;
-  transition: background var(--transition-fast), opacity var(--transition-fast);
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast), opacity var(--transition-fast);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(17,24,39,0.25);
 }
 
 .btn:hover {
-  background: #2666d5; /* slightly darker */
+  color: var(--color-text);
+  text-decoration-color: rgba(17,24,39,0.45);
 }
 
 .btn:active {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
-/* Secondary button */
+/* Secondary button (not used by default, keep minimal) */
 .btn-secondary {
-  background: #fff;
+  background: transparent;
   color: var(--color-text);
-  border: var(--border-subtle);
-}
-
-.btn-secondary:hover {
-  border-color: rgba(17,24,39,0.2);
+  border: none;
 }
 
 /* Filters row */
@@ -67,25 +68,26 @@
   gap: 12px;
   align-items: center;
   justify-content: space-between;
-  margin: 6px 0 12px;
+  margin: 8px 0 14px;
   flex-wrap: wrap;
 }
 
 .filters {
   display: flex;
-  gap: 6px;
+  gap: 2px;
 }
 
-/* Filters as text buttons with underline active state */
+/* Filters as plain text tabs with underline for active */
 .filter-btn {
   height: 32px;
-  padding: 0 8px;
-  border-radius: var(--radius-sm);
+  padding: 0 6px;
+  border-radius: 0;
   border: none;
   background: transparent;
   color: var(--color-secondary);
   cursor: pointer;
-  transition: color var(--transition-fast);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+  border-bottom: 1px solid transparent;
 }
 
 .filter-btn:hover {
@@ -93,9 +95,8 @@
 }
 
 .filter-btn.active {
-  color: var(--color-primary);
-  border-bottom: 2px solid var(--color-primary);
-  border-radius: 0;
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-primary); /* small ocean accent only here */
 }
 
 .count {
@@ -123,7 +124,7 @@
   width: 18px;
   height: 18px;
   appearance: none;
-  border: 2px solid rgba(17,24,39,0.35);
+  border: 1px solid #e5e7eb;
   border-radius: 4px;
   display: grid;
   place-content: center;
@@ -137,18 +138,18 @@
   width: 10px;
   height: 10px;
   transform: scale(0);
-  transition: transform var(--transition-fast);
+  transition: transform var(--transition-fast), background var(--transition-fast);
   background: var(--color-success);
   border-radius: 2px;
 }
 
 .checkbox:hover {
-  border-color: var(--color-primary);
+  border-color: #d1d5db;
 }
 
 .checkbox:checked {
-  border-color: var(--color-success);
-  background: rgba(6,182,212,0.08);
+  border-color: #0ea5b1;
+  background: #fff;
 }
 
 .checkbox:checked::before {
@@ -158,13 +159,14 @@
 .todo-text {
   color: var(--color-text);
   font-size: var(--font-base);
+  line-height: 1.6;
   transition: color var(--transition-fast), opacity var(--transition-fast);
 }
 
 .todo-text.completed {
   color: var(--color-secondary);
   text-decoration: line-through;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 /* Compact delete icon button */
@@ -172,31 +174,35 @@
   border: none;
   background: transparent;
   color: var(--color-error);
-  padding: 4px 6px;
+  padding: 2px 4px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
+  transition: color var(--transition-fast), opacity var(--transition-fast);
 }
 
 .delete-btn:hover {
-  background: rgba(239,68,68,0.06);
+  opacity: 0.85;
 }
 
-/* Clear Completed button */
+/* Clear Completed becomes subtle text button too */
 .clear-btn {
-  height: 32px;
-  padding: 0 10px;
-  border-radius: var(--radius-sm);
-  border: var(--border-subtle);
-  background: #fff;
+  height: auto;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  background: transparent;
   color: var(--color-error);
   cursor: pointer;
-  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(239,68,68,0.35);
 }
 
 .clear-btn:hover {
-  background: rgba(239,68,68,0.04);
-  border-color: rgba(239,68,68,0.5);
+  color: var(--color-error);
+  text-decoration-color: rgba(239,68,68,0.6);
 }
 
 @media (max-width: 640px) {
@@ -206,6 +212,6 @@
     gap: 10px;
   }
   .btn {
-    width: 100%;
+    width: auto;
   }
 }
