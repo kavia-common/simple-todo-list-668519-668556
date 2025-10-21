@@ -1,23 +1,22 @@
-/* Components styling for the Todo app (Ocean Professional) */
+/* Components styling for the Todo app (Ocean Professional, minimalist) */
 
 /* Input section */
 .input-row {
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-bottom: 16px;
+  margin: 16px 0 20px;
 }
 
 .input-control {
   flex: 1;
-  height: 44px;
+  height: 40px;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(17,24,39,0.1);
-  padding: 0 14px;
+  border: var(--border-subtle);
+  padding: 0 12px;
   background: var(--color-surface);
   color: var(--color-text);
-  box-shadow: var(--shadow-inner);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
 }
 
 .input-control::placeholder {
@@ -26,41 +25,40 @@
 
 .input-control:focus {
   outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+  border: 1px solid rgba(59,130,246,0.5);
   background: #fff;
 }
 
+/* Primary button */
 .btn {
-  height: 44px;
-  padding: 0 16px;
+  height: 40px;
+  padding: 0 14px;
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   background: var(--color-primary);
   color: #fff;
   font-weight: 600;
   cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), opacity var(--transition-fast);
-  box-shadow: var(--shadow-soft);
+  transition: background var(--transition-fast), opacity var(--transition-fast);
 }
 
 .btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(59,130,246,0.25);
+  background: #2666d5; /* slightly darker */
 }
 
 .btn:active {
-  transform: translateY(0);
+  opacity: 0.9;
 }
 
+/* Secondary button */
 .btn-secondary {
   background: #fff;
   color: var(--color-text);
-  border-color: rgba(17,24,39,0.12);
+  border: var(--border-subtle);
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-primary);
+  border-color: rgba(17,24,39,0.2);
 }
 
 /* Filters row */
@@ -69,46 +67,46 @@
   gap: 12px;
   align-items: center;
   justify-content: space-between;
-  margin: 8px 0 16px;
+  margin: 6px 0 12px;
   flex-wrap: wrap;
 }
 
 .filters {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
+/* Filters as text buttons with underline active state */
 .filter-btn {
-  height: 36px;
-  padding: 0 12px;
+  height: 32px;
+  padding: 0 8px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(17,24,39,0.12);
-  background: #fff;
-  color: var(--color-text);
+  border: none;
+  background: transparent;
+  color: var(--color-secondary);
   cursor: pointer;
-  transition: background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
+  transition: color var(--transition-fast);
 }
 
 .filter-btn:hover {
-  border-color: var(--color-primary);
+  color: var(--color-text);
 }
 
 .filter-btn.active {
-  background: rgba(59,130,246,0.1);
-  border-color: var(--color-primary);
   color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  border-bottom: 2px solid var(--color-primary);
+  border-radius: 0;
 }
 
 .count {
   color: var(--color-secondary);
-  font-size: 14px;
+  font-size: var(--font-sm);
 }
 
 /* Todo list */
 .todo-list {
-  margin-top: 8px;
-  border-top: 1px solid rgba(17,24,39,0.06);
+  margin-top: 12px;
+  border-top: var(--border-muted);
 }
 
 .todo-item {
@@ -116,41 +114,41 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 12px;
-  padding: 12px 4px;
-  border-bottom: 1px solid rgba(17,24,39,0.06);
+  padding: 14px 4px;
+  border-bottom: var(--border-muted);
 }
 
+/* Minimal checkbox */
 .checkbox {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   appearance: none;
   border: 2px solid rgba(17,24,39,0.35);
-  border-radius: 6px;
+  border-radius: 4px;
   display: grid;
   place-content: center;
   cursor: pointer;
-  transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  background: #fff;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
 }
 
 .checkbox::before {
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   transform: scale(0);
   transition: transform var(--transition-fast);
-  box-shadow: inset 1em 1em var(--color-success);
-  border-radius: 3px;
+  background: var(--color-success);
+  border-radius: 2px;
 }
 
 .checkbox:hover {
   border-color: var(--color-primary);
-  transform: translateY(-1px);
 }
 
 .checkbox:checked {
   border-color: var(--color-success);
-  background: rgba(6,182,212,0.1);
-  box-shadow: 0 0 0 3px rgba(6,182,212,0.18);
+  background: rgba(6,182,212,0.08);
 }
 
 .checkbox:checked::before {
@@ -159,49 +157,53 @@
 
 .todo-text {
   color: var(--color-text);
+  font-size: var(--font-base);
   transition: color var(--transition-fast), opacity var(--transition-fast);
 }
 
 .todo-text.completed {
   color: var(--color-secondary);
   text-decoration: line-through;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
+/* Compact delete icon button */
 .delete-btn {
   border: none;
   background: transparent;
   color: var(--color-error);
-  padding: 6px 8px;
+  padding: 4px 6px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: background var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
 }
 
 .delete-btn:hover {
-  background: rgba(239,68,68,0.1);
+  background: rgba(239,68,68,0.06);
 }
 
+/* Clear Completed button */
 .clear-btn {
-  height: 36px;
-  padding: 0 12px;
+  height: 32px;
+  padding: 0 10px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(17,24,39,0.12);
+  border: var(--border-subtle);
   background: #fff;
   color: var(--color-error);
   cursor: pointer;
-  transition: background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .clear-btn:hover {
-  background: rgba(239,68,68,0.05);
-  border-color: var(--color-error);
+  background: rgba(239,68,68,0.04);
+  border-color: rgba(239,68,68,0.5);
 }
 
 @media (max-width: 640px) {
   .input-row {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
   .btn {
     width: 100%;
