@@ -39,7 +39,7 @@ export default function Filters({
         aria-label="Clear completed"
         title="Clear completed"
       >
-        Clear Completed
+        Clear completed
       </button>
     </div>
   );

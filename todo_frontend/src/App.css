@@ -1,22 +1,22 @@
-/* Components styling for the Todo app (Ocean Professional, ultra-minimal) */
+/* Components styling for ultra-flat wireframe */
 
 /* Input section */
 .input-row {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
-  margin: 20px 0 22px;
+  margin: 24px 0 18px;
 }
 
 .input-control {
   flex: 1;
   height: 40px;
-  border-radius: var(--radius-md);
-  border: var(--border-subtle);
-  padding: 0 12px;
-  background: var(--color-surface);
+  border: none;
+  border-bottom: 1px solid #d1d5db; /* single bottom border */
+  padding: 0 2px 0 0;
+  background: transparent;
   color: var(--color-text);
-  transition: border-color var(--transition-fast), background var(--transition-fast);
+  transition: border-color var(--transition-fast);
 }
 
 .input-control::placeholder {
@@ -25,41 +25,27 @@
 
 .input-control:focus {
   outline: none;
-  border: 1px solid #e5e7eb; /* keep neutral */
-  background: #fff;
+  border-bottom-color: var(--color-primary); /* accent only on focus */
 }
 
-/* Primary button becomes text-only link style */
+/* Primary button as plain text action */
 .btn {
   height: auto;
   padding: 0;
-  border-radius: 0;
   border: none;
   background: transparent;
   color: var(--color-text);
   font-weight: 600;
   cursor: pointer;
   transition: color var(--transition-fast), text-decoration-color var(--transition-fast), opacity var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus-visible {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  text-decoration-color: rgba(17,24,39,0.25);
-}
-
-.btn:hover {
-  color: var(--color-text);
-  text-decoration-color: rgba(17,24,39,0.45);
-}
-
-.btn:active {
-  opacity: 0.85;
-}
-
-/* Secondary button (not used by default, keep minimal) */
-.btn-secondary {
-  background: transparent;
-  color: var(--color-text);
-  border: none;
 }
 
 /* Filters row */
@@ -68,20 +54,19 @@
   gap: 12px;
   align-items: center;
   justify-content: space-between;
-  margin: 8px 0 14px;
+  margin: 12px 0 8px;
   flex-wrap: wrap;
 }
 
 .filters {
   display: flex;
-  gap: 2px;
+  gap: 8px;
 }
 
 /* Filters as plain text tabs with underline for active */
 .filter-btn {
   height: 32px;
-  padding: 0 6px;
-  border-radius: 0;
+  padding: 0 2px;
   border: none;
   background: transparent;
   color: var(--color-secondary);
@@ -90,13 +75,14 @@
   border-bottom: 1px solid transparent;
 }
 
-.filter-btn:hover {
+.filter-btn:hover,
+.filter-btn:focus-visible {
   color: var(--color-text);
 }
 
 .filter-btn.active {
   color: var(--color-text);
-  border-bottom: 2px solid var(--color-primary); /* small ocean accent only here */
+  border-bottom: 2px solid var(--color-primary); /* only accent here */
 }
 
 .count {
@@ -115,47 +101,17 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 12px;
-  padding: 14px 4px;
+  padding: 14px 0;
   border-bottom: var(--border-muted);
 }
 
-/* Minimal checkbox */
+/* Checkbox: native default (rely on browser), keep visible focus via global rule */
 .checkbox {
   width: 18px;
   height: 18px;
-  appearance: none;
-  border: 1px solid #e5e7eb;
-  border-radius: 4px;
-  display: grid;
-  place-content: center;
-  cursor: pointer;
-  background: #fff;
-  transition: border-color var(--transition-fast), background var(--transition-fast);
 }
 
-.checkbox::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  transform: scale(0);
-  transition: transform var(--transition-fast), background var(--transition-fast);
-  background: var(--color-success);
-  border-radius: 2px;
-}
-
-.checkbox:hover {
-  border-color: #d1d5db;
-}
-
-.checkbox:checked {
-  border-color: #0ea5b1;
-  background: #fff;
-}
-
-.checkbox:checked::before {
-  transform: scale(1);
-}
-
+/* Todo text */
 .todo-text {
   color: var(--color-text);
   font-size: var(--font-base);
@@ -169,49 +125,50 @@
   opacity: 0.9;
 }
 
-/* Compact delete icon button */
+/* Delete as plain text action */
 .delete-btn {
   border: none;
   background: transparent;
   color: var(--color-error);
-  padding: 2px 4px;
-  border-radius: var(--radius-sm);
+  padding: 0;
   cursor: pointer;
-  transition: color var(--transition-fast), opacity var(--transition-fast);
+  transition: opacity var(--transition-fast);
+  text-decoration: none;
 }
 
-.delete-btn:hover {
-  opacity: 0.85;
+.delete-btn:hover,
+.delete-btn:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-/* Clear Completed becomes subtle text button too */
+/* Clear Completed as plain text */
 .clear-btn {
   height: auto;
   padding: 0;
-  border-radius: 0;
   border: none;
   background: transparent;
   color: var(--color-error);
   cursor: pointer;
   transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+  text-decoration: none;
+}
+
+.clear-btn:hover,
+.clear-btn:focus-visible {
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-  text-decoration-color: rgba(239,68,68,0.35);
 }
 
-.clear-btn:hover {
-  color: var(--color-error);
-  text-decoration-color: rgba(239,68,68,0.6);
-}
-
+/* Small screens */
 @media (max-width: 640px) {
   .input-row {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
+    gap: 12px;
   }
   .btn {
     width: auto;
+    align-self: flex-start;
   }
 }

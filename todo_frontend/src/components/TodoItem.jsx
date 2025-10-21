@@ -26,7 +26,7 @@ export default function TodoItem({ item, onToggle, onDelete }) {
         onClick={onDelete}
         title="Delete task"
       >
-        ✕
+        Delete
       </button>
     </div>
   );

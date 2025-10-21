@@ -1,33 +1,33 @@
 :root {
-  /* Ocean Professional Theme (ultra-minimal) */
-  --color-primary: #3b82f6; /* use sparingly for focus/active lines */
-  --color-secondary: #6b7280; /* calmer neutral */
+  /* Ultra-flat wireframe variables */
+  --color-primary: #3b82f6; /* only for focus/active underline */
+  --color-secondary: #6b7280;
   --color-success: #06b6d4;
   --color-error: #ef4444;
-  --color-bg: #fafafa;
-  --color-surface: #ffffff;
+  --color-bg: #ffffff;
+  --color-surface: transparent;
   --color-text: #111827;
 
-  /* Minimal rounded corners */
-  --radius-sm: 4px;
-  --radius-md: 4px;
-  --radius-lg: 4px;
+  /* Minimal corners (keep tiny if needed) */
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
 
-  /* No shadows for flat UI */
+  /* No shadows */
   --shadow-soft: none;
 
   /* Motion */
   --transition-fast: 120ms ease;
   --transition-mid: 160ms ease;
 
-  /* Borders (neutral, 1px) */
+  /* Separators: neutral, single pixel */
   --border-subtle: 1px solid #e5e7eb;
   --border-muted: 1px solid #e5e7eb;
 
-  /* Typography scale */
-  --font-base: 16px;
-  --font-sm: 14px;
-  --font-lg: 18px;
+  /* Typography: slightly larger, airy */
+  --font-base: 17px;
+  --font-sm: 15px;
+  --font-lg: 20px;
   --line: 1.6;
 }
 
@@ -58,6 +58,8 @@ button,
 input {
   font-family: inherit;
   font-size: inherit;
+  background: transparent;
+  border-radius: 0;
 }
 
 .app-root {
@@ -66,11 +68,12 @@ input {
   flex-direction: column;
 }
 
-/* Header: flatter, more whitespace */
+/* Header: pure text, generous space */
 .header {
-  padding: 48px 16px 24px;
+  padding: 56px 16px 24px;
   text-align: center;
   background: transparent;
+  border: none;
 }
 
 .header .title {
@@ -90,25 +93,25 @@ input {
 /* Layout */
 .container {
   width: 100%;
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 0 16px 48px;
+  padding: 0 16px 56px;
 }
 
-/* Card: subtle border, no heavy drop shadow, more breathing room */
+/* Card: remove fills; use only content spacing and subtle border on top of list area handled in App.css */
 .card {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
+  background: transparent;
+  border-radius: 0;
   box-shadow: none;
-  padding: 24px;
+  padding: 24px 0;
   margin-top: 0;
-  border: var(--border-muted);
+  border: none;
 }
 
 /* Footer */
 .footer-note {
   text-align: center;
-  padding: 32px 16px 48px;
+  padding: 40px 16px 56px;
 }
 
 .muted {
@@ -116,9 +119,8 @@ input {
   font-size: var(--font-sm);
 }
 
-/* Accessible focus ring */
-:where(button, [role="button"], a, input, .filter-btn, .btn, .clear-btn, .checkbox):focus-visible {
-  outline: 2px solid rgba(59,130,246,0.5); /* ocean accent only for focus */
+/* Accessible focus ring: clear and 2px */
+:where(button, [role="button"], a, input, .filter-btn, .btn, .clear-btn):focus-visible {
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-  border-radius: 4px;
 }

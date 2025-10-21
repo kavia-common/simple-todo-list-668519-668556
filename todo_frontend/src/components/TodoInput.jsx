@@ -24,7 +24,7 @@ export default function TodoInput({ onAdd }) {
       <input
         className="input-control"
         type="text"
-        placeholder="Add a new task…"
+        placeholder="Type a task and press Enter"
         aria-label="Todo text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
